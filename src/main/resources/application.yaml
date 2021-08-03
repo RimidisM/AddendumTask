@@ -26,3 +26,6 @@ api:
     credentials:
       user: test
       password: ENC(M2yqHiWVPaq0GD49+03gfQ==)
+
+timeout:
+  connection: 20000
