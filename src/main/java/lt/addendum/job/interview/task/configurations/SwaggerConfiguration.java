@@ -16,7 +16,7 @@ import java.util.Collections;
 
 @Configuration
 @EnableSwagger2
-public class ApplicationConfiguration {
+public class SwaggerConfiguration {
 
     private static final String BASIC_AUTH = "basicAuth";
     private static final String BASIC_PACKAGE = "lt.addendum.job.interview.task";
