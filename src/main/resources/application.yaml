@@ -29,3 +29,6 @@ api:
 
 timeout:
   connection: 20000
+
+springdoc:
+  paths-to-exclude: /swagger-resources/**
