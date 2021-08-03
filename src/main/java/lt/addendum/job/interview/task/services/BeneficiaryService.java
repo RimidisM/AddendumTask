@@ -1,5 +1,6 @@
 package lt.addendum.job.interview.task.services;
 
+import lt.addendum.job.interview.task.clients.ExternalQrClient;
 import lt.addendum.job.interview.task.domains.dto.RequestDTO;
 import lt.addendum.job.interview.task.domains.models.BeneficiaryModel;
 import lt.addendum.job.interview.task.exceptions.RecordNotFoundException;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
 import java.util.List;
 
 @Service
@@ -16,10 +18,12 @@ public class BeneficiaryService {
     private final Logger logger = LoggerFactory.getLogger(BeneficiaryService.class);
 
     private final BeneficiaryRepository repository;
+    private final ExternalQrClient externalQrClient;
 
-    public BeneficiaryService(BeneficiaryRepository repository) {
+    public BeneficiaryService(BeneficiaryRepository repository, ExternalQrClient externalQrClient) {
 
         this.repository = repository;
+        this.externalQrClient = externalQrClient;
     }
 
     public BeneficiaryModel addBeneficiary(RequestDTO requestDTO) {
@@ -77,5 +81,10 @@ public class BeneficiaryService {
         logger.info("BeneficiaryModel has been deleted: {}", beneficiaryModel);
 
         return beneficiaryModel;
+    }
+
+    public InputStream getBeneficiaryQr(Long id) {
+
+        return externalQrClient.getQrCode(getBeneficiary(id));
     }
 }

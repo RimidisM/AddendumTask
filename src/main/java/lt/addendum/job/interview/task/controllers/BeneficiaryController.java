@@ -2,8 +2,8 @@ package lt.addendum.job.interview.task.controllers;
 
 import lt.addendum.job.interview.task.domains.dto.RequestDTO;
 import lt.addendum.job.interview.task.domains.models.BeneficiaryModel;
-import lt.addendum.job.interview.task.exceptions.RecordNotFoundException;
 import lt.addendum.job.interview.task.services.BeneficiaryService;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,9 +71,17 @@ public class BeneficiaryController {
         return ResponseEntity.ok().body(service.deleteBeneficiary(id));
     }
 
+    @GetMapping(path = "/getBeneficiaryQr/{id}", produces = "image/png")
+    public ResponseEntity<byte[]> getBeneficiaryQr(@PathVariable Long id) throws IOException {
+
+        logger.info("Received request to QR for beneficiary with id: {}", id);
+
+        return ResponseEntity.ok().body(IOUtils.toByteArray(service.getBeneficiaryQr(id)));
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Map<String, String> handleValidationException(MethodArgumentNotValidException ex){
+    public Map<String, String> handleValidationException(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();

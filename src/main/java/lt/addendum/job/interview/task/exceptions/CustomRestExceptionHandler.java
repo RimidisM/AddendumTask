@@ -14,6 +14,6 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {RecordNotFoundException.class})
     protected ResponseEntity<Object> handleException(RuntimeException ex, WebRequest request) {
         String bodyOfResponse = ex.getLocalizedMessage();
-        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.CONFLICT, request);
+        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 }
