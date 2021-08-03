@@ -30,5 +30,12 @@ api:
 timeout:
   connection: 20000
 
-springdoc:
-  paths-to-exclude: /swagger-resources/**
+jasypt:
+  encryptor:
+    password: password-secret-key
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+qr:
+  client:
+    url: https://qrcode.tec-it.com/API/QRCode
