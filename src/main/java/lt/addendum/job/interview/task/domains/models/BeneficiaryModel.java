@@ -13,7 +13,7 @@ public class BeneficiaryModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
-    @Column(name = "uniq_code", unique=true)
+    @Column(name = "uniq_code", unique = true)
     private String uuid;
     @Column(name = "name")
     private String name;
