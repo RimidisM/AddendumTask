@@ -1,5 +1,5 @@
 # AddendumTask
-###Job interview task
+### Job interview task
 
 This project is for educational purposes only. For Java and Spring Boot coding skills improvement.
 
@@ -10,10 +10,10 @@ Site published at: https://github.com/RimidisM/AddendumTask
 ### Task owner: ADDENDUM GROUP
 
 
-#Authentication
+# Authentication
 For all request must be used Basic Auth! username and password will be provided by email.
 
-####Responses:
+#### Responses:
 401
 ```json
 {
@@ -35,17 +35,17 @@ or
 }
 ```
 
-#Controller
-###/api/addBeneficiary
+# Controller
+### /api/addBeneficiary
 
-####Request:
+#### Request:
 ```json
 {
 "name": "string"
 }
 ```
 
-####Responses:
+#### Responses:
 200 (Returns created object)
 ```json
 {
@@ -55,12 +55,12 @@ or
 }
 ```
 
-###/api/deleteBeneficiary/{id}
+### /api/deleteBeneficiary/{id}
 
-####Request:
+#### Request:
 {id} - integer, record id
 
-####Responses:
+#### Responses:
 200 (Returns deleted object)
 ```json
 {
@@ -74,9 +74,9 @@ or
 Record not found. Id: 2
 ```
 
-###/api/getAllBeneficiary
+### /api/getAllBeneficiary
 
-####Responses:
+#### Responses:
 200 (Returns deleted object)
 ```json
 [
@@ -93,12 +93,12 @@ Record not found. Id: 2
 ]
 ```
 
-###/api/getBeneficiary/{id}
+### /api/getBeneficiary/{id}
 
-####Request:
+#### Request:
 {id} - integer, record id
 
-####Responses:
+#### Responses:
 200 (Returns one object)
 ```json
 {
@@ -112,12 +112,12 @@ Record not found. Id: 2
 Record not found. Id: 2
 ```
 
-###/api/getBeneficiaryQr/{id}
+### /api/getBeneficiaryQr/{id}
 
-####Request:
+#### Request:
 {id} - integer, record id
 
-####Responses:
+#### Responses:
 200 (Returns QR code with selected object information)
 
 404
@@ -125,9 +125,9 @@ Record not found. Id: 2
 Record not found. Id: 2
 ```
 
-###/api/updateBeneficiary/{id}
+### /api/updateBeneficiary/{id}
 
-####Request:
+#### Request:
 {id} - integer, record id
 
 body
@@ -137,7 +137,7 @@ body
 }
 ```
 
-####Responses:
+#### Responses:
 200 (Returns updated object)
 ```json
 {
@@ -148,4 +148,4 @@ body
 ```
 
 :exclamation:
-##All other responses - standard for Spring boot
+## All other responses - standard for Spring boot
