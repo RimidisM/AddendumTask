@@ -1,0 +1,41 @@
+server:
+  port: 7777
+
+spring:
+  application:
+    name: addendum
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  h2:
+    console:
+      enabled: true
+
+api:
+  auth:
+    activate:
+      quality: /api/**
+
+    credentials:
+      user: test
+      password: ENC(M2yqHiWVPaq0GD49+03gfQ==)
+
+timeout:
+  connection: 20000
+
+jasypt:
+  encryptor:
+    password: password-secret-key
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+qr:
+  client:
+    url: https://qrcode.tec-it.com/API/QRCode
