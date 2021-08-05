@@ -12,32 +12,32 @@ class ExternalQrClientTests extends TestsSpecifications {
 
     ExternalQrClient client
 
-    MockWebServer server;
+    MockWebServer server
 
     def FILE = "1234"
 
     @BeforeEach
     void setup() throws IOException {
-        server = new MockWebServer();
-        server.start();
-        String rootUrl = server.url("/api/").toString();
-        client = new ExternalQrClient(WebClient.create(rootUrl));
+        server = new MockWebServer()
+        server.start()
+        String rootUrl = server.url("/api/").toString()
+        client = new ExternalQrClient(WebClient.create(rootUrl))
     }
 
     @AfterEach
     void tearDown() throws IOException {
-        server.shutdown();
+        server.shutdown()
     }
 
     def "WebClient should work properly"() {
         setup:
         MockResponse response = new MockResponse()
                 .addHeader("Content-Type", "image/png")
-                .setBody(FILE);
-        server.enqueue(response);
+                .setBody(FILE)
+        server.enqueue(response)
 
         and:
-        byte[] byteArrray = FILE.getBytes("ASCII");
+        byte[] byteArrray = FILE.getBytes("ASCII")
 
         InputStream byteStram = new ByteArrayInputStream(byteArrray)
 

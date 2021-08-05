@@ -52,7 +52,7 @@ class BeneficiaryServiceTests extends TestsSpecifications {
         repository.findById(*_) >> Optional.empty()
 
         when:
-        def result = service.getBeneficiary(123)
+        service.getBeneficiary(123)
 
         then:
         thrown(RecordNotFoundException)
